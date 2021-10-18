@@ -9,7 +9,7 @@ def citire_lista():
 def printMenu():
     print("1. Citire lista")
     print("2. lista dupa ce s-au eliminat duplicatele")
-    print("3.")
+    print("3. Afisarea sumei primelor n numere pozitive din lista ")
     print("4.Afisare daca numerele pozitive din lista sunt in ordine crescatoare")
     print("5.")
     print("x. Iesire")
@@ -28,7 +28,17 @@ def elimina_duplicatele(l):
     print(str(cop))
 
 
-
+def suma_primelor_n_numere_pozitive(l,n):
+    suma = 0
+    nr = 0
+    for i in l:
+        while nr < n:
+            suma = suma + l[i]
+            nr = nr + 1
+    if nr < n:
+        print("Dimensiunea listei este prea mica")
+    else:
+        return suma
 
 
 def nr_pozitive_in_ordine_cresc(l):
@@ -76,7 +86,6 @@ def test_numarul_de_divizori_proprii():
     assert numarul_de_divizori_proprii(7) == (0)
 
 
-
 def main():
     test_nr_pozitive_in_ordine_crescatoare()
     test_numarul_de_divizori_proprii()
@@ -90,6 +99,7 @@ def main():
             elimina_duplicatele(l)
         elif optiune == "3":
             n = int(input("dati nr n:"))
+            print(suma_primelor_n_numere_pozitive(l,n))
         elif optiune == "4":
             if  nr_pozitive_in_ordine_cresc(l) == False :
                 print ("NU")
