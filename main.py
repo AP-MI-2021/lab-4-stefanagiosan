@@ -8,23 +8,28 @@ def citire_lista():
 
 def printMenu():
     print("1. Citire lista")
-    print("2.")
+    print("2. lista dupa ce s-au eliminat duplicatele")
     print("3.")
     print("4.Afisare daca numerele pozitive din lista sunt in ordine crescatoare")
+    print("5.")
     print("x. Iesire")
 
-'''
-Afișarea sumei primelor n numere pozitive din listă, unde n se citește de la tastatură. Dacă
-sunt mai puțin de n numere pozitive în listă, se afișează mesajul “Dimensiunea listei este prea
-mică”.
-'''
+
+def elimina_duplicatele(l):
+    '''
+    Afisam lista dupa ce eliminam duplicatele
+    :param l: lista cu numere intregi din care eliminam duplicatele
+    :return: se afiseaza lista fara duplicate
+    '''
+    cop = []
+    for i in l:
+        if i not in cop:
+            cop.append(i)
+    print(str(cop))
 
 
 
-'''
-pb 4. Să se afișeze “DA” în cazul în care toate numerele pozitive din listă sunt în ordine crescătoare și
-“NU” altfel.
-'''
+
 
 def nr_pozitive_in_ordine_cresc(l):
     '''
@@ -55,14 +60,34 @@ def test_nr_pozitive_in_ordine_crescatoare():
     assert nr_pozitive_in_ordine_cresc([-1, 4, -5, 6, -7]) == True
     assert nr_pozitive_in_ordine_cresc([-1, -4, 15, 6, -7]) == False
 
+
+def numarul_de_divizori_proprii(n):
+    nr = 0
+    for i in range(2,n-1):
+        if n % i == 0:
+            nr = nr + 1
+    return nr
+
+
+def test_numarul_de_divizori_proprii():
+    assert numarul_de_divizori_proprii(25) == (1)
+    assert numarul_de_divizori_proprii(19) == (0)
+    assert numarul_de_divizori_proprii(12) == (4)
+    assert numarul_de_divizori_proprii(7) == (0)
+
+
+
 def main():
     test_nr_pozitive_in_ordine_crescatoare()
+    test_numarul_de_divizori_proprii()
     l = []
     while True:
         printMenu()
         optiune = input("Dati optiunea: ")
         if optiune == "1":
             l = citire_lista()
+        elif optiune== "2":
+            elimina_duplicatele(l)
         elif optiune == "3":
             n = int(input("dati nr n:"))
         elif optiune == "4":
