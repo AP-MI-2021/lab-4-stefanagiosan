@@ -29,16 +29,31 @@ def elimina_duplicatele(l):
 
 
 def suma_primelor_n_numere_pozitive(l,n):
+    '''
+    Se face suma primelor n numere pozitive din lista, iar daca nu sunt n numere se afiseaza
+    "dimensiunea listei este prea mica"
+    :param l: lista din care se iau numerele pozitive
+    :param n: cate numere pozitive se adauga in suma
+    :return: returnam suma daca avem destule numere pozitive sau in caz contrar ,mesaj
+    '''
+
     suma = 0
-    nr = 0
+    nr = 1
     for i in l:
-        while nr < n:
-            suma = suma + l[i]
+        if nr <= n and i>=0 :
+            suma = suma + i
             nr = nr + 1
     if nr < n:
         print("Dimensiunea listei este prea mica")
     else:
         return suma
+
+
+def test_suma_primelor_n_numere_pozitive():
+    assert suma_primelor_n_numere_pozitive([1,2,-3,3,5],3) == (6)
+    assert suma_primelor_n_numere_pozitive([10,100,1000,1],4) == (1111)
+    assert suma_primelor_n_numere_pozitive([1,2,-5,-6],2) == (3)
+
 
 
 def nr_pozitive_in_ordine_cresc(l):
@@ -72,6 +87,11 @@ def test_nr_pozitive_in_ordine_crescatoare():
 
 
 def numarul_de_divizori_proprii(n):
+    '''
+    Calculam cati divizori proprii are numarul n
+    :param n: numarul la care se calculeaza divizorii
+    :return: se returneaza numarul de divizori proprii
+    '''
     nr = 0
     for i in range(2,n-1):
         if n % i == 0:
@@ -89,6 +109,7 @@ def test_numarul_de_divizori_proprii():
 def main():
     test_nr_pozitive_in_ordine_crescatoare()
     test_numarul_de_divizori_proprii()
+    test_suma_primelor_n_numere_pozitive()
     l = []
     while True:
         printMenu()
