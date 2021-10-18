@@ -28,6 +28,7 @@ def elimina_duplicatele(l):
     print(str(cop))
 
 
+
 def suma_primelor_n_numere_pozitive(l,n):
     '''
     Se face suma primelor n numere pozitive din lista, iar daca nu sunt n numere se afiseaza
